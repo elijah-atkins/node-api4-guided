@@ -1,6 +1,10 @@
+require("dotenv").config();
 const server = require("./api/server.js");
 
-const port = 5000;
-server.listen(port, () => {
-  console.log(`\n*** Server Running on http://localhost:${port} ***\n`);
-});
+const PORT = process.env.PORT;
+
+!PORT || PORT === undefined
+  ? console.log("ERROR: Cannot find port")
+  : server.listen(PORT, () => {
+      console.log(`\n*** Server Running on http://localhost:${PORT} ***\n`);
+    });
